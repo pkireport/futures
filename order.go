@@ -96,6 +96,12 @@ func (as *ApiService) Order(orderId string) (*ApiResponse, error) {
 	return as.Call(req)
 }
 
+// ActiveOrders returns active orders
+func (as *ApiService) Order() (*ApiResponse, error) {
+	req := NewRequest(http.MethodGet, "/api/v1/orders?status=active", nil)
+	return as.Call(req)
+}
+
 // Order returns a single order by client Oid.
 func (as *ApiService) OrderByClientOid(clientOid string) (*ApiResponse, error) {
 	req := NewRequest(http.MethodGet, "/api/v1/orders/byClientOid?clientOid="+clientOid, nil)
