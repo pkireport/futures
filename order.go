@@ -97,7 +97,7 @@ func (as *ApiService) Order(orderId string) (*ApiResponse, error) {
 }
 
 // ActiveOrders returns active orders
-func (as *ApiService) Order() (*ApiResponse, error) {
+func (as *ApiService) ActiveOrders() (*ApiResponse, error) {
 	req := NewRequest(http.MethodGet, "/api/v1/orders?status=active", nil)
 	return as.Call(req)
 }
