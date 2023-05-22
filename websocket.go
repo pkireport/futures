@@ -79,6 +79,7 @@ type WebSocketMessage struct {
 type WebSocketSubscribeMessage struct {
 	*WebSocketMessage
 	Topic          string `json:"topic"`
+	Subject          string `json:"subject"`
 	PrivateChannel bool   `json:"privateChannel"`
 	Response       bool   `json:"response"`
 }
