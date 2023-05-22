@@ -92,13 +92,14 @@ func NewPingMessage() *WebSocketMessage {
 }
 
 // NewSubscribeMessage creates a subscribe message instance.
-func NewSubscribeMessage(topic string, privateChannel bool) *WebSocketSubscribeMessage {
+func NewSubscribeMessage(topic string, subject string, privateChannel bool) *WebSocketSubscribeMessage {
 	return &WebSocketSubscribeMessage{
 		WebSocketMessage: &WebSocketMessage{
 			Id:   IntToString(time.Now().UnixNano()),
 			Type: SubscribeMessage,
 		},
 		Topic:          topic,
+		Subject:	subject,
 		PrivateChannel: privateChannel,
 		Response:       true,
 	}
@@ -108,13 +109,14 @@ func NewSubscribeMessage(topic string, privateChannel bool) *WebSocketSubscribeM
 type WebSocketUnsubscribeMessage WebSocketSubscribeMessage
 
 // NewUnsubscribeMessage creates a unsubscribe message instance.
-func NewUnsubscribeMessage(topic string, privateChannel bool) *WebSocketUnsubscribeMessage {
+func NewUnsubscribeMessage(topic string, subject string, privateChannel bool) *WebSocketUnsubscribeMessage {
 	return &WebSocketUnsubscribeMessage{
 		WebSocketMessage: &WebSocketMessage{
 			Id:   IntToString(time.Now().UnixNano()),
 			Type: UnsubscribeMessage,
 		},
 		Topic:          topic,
+		Subject:	subject,
 		PrivateChannel: privateChannel,
 		Response:       true,
 	}
